@@ -25,8 +25,8 @@ export default function Content({ data }: any) {
 		router.refresh();
 	}
 	const cancel = () => {
-		changeContent("");
-		changeTitle("");
+		changeContent(content);
+		changeTitle(title);
 	}
 	return (
 		<form>

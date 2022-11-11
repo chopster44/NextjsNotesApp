@@ -5,7 +5,7 @@ import PocketBase from "pocketbase";
 
 export const dynamic = "auto",
   dynamicParams = true,
-  revalidate = 3,
+  revalidate = 0,
   fetchCache = "auto",
   runtime = "nodejs",
   preferredRegion = "auto";
