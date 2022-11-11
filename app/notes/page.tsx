@@ -5,7 +5,7 @@ import PocketBase from "pocketbase";
 
 export const dynamic = "auto",
   dynamicParams = true,
-  revalidate = 1,
+  revalidate = 3,
   fetchCache = "auto",
   runtime = "nodejs",
   preferredRegion = "auto";
@@ -26,6 +26,8 @@ export default async function NotesPage() {
         {notes?.map((note) => {
           if (!note.hidden) {
             return <Note key={note.id} note={note} />;
+          } else {
+              return;
           }
         })}
 		<CreateNote />
