@@ -9,10 +9,10 @@ import { useRouter } from "next/navigation";
 
 export default function TopBar({ id }: any) {
 	const router = useRouter();
+	const client = new PocketBase('http://127.0.0.1:8090');
 
 	const hide = async () => {
-		const client = new PocketBase('http://127.0.0.1:8090');
-		const record = await client.records.update('notes1', id, {
+		await client.records.update('notes1', id, {
 			hidden: true
 		});
 		router.refresh();

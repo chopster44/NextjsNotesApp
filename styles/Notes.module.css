@@ -85,12 +85,22 @@
 	width: 100%;
 	max-width: 100%;
   }
+
+.contentEditorInput {
+	background: none;
+	border: none;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+}
   
   .titleInput {
 	background: none;
 	border: none;
 	width: 100%;
 	max-width: 100%;
+	  font-size: x-large;
+	  font-weight: bold;
   }
 
   button

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import CreateNote from "./CreateNote";
 import styles from "../../styles/Notes.module.css";
 import Note from './Note';
@@ -25,13 +24,12 @@ export default async function NotesPage() {
       <h1>Notes</h1>
       <div className={styles.grid}>
         {notes?.map((note) => {
-          if (note.hidden == false) {
+          if (!note.hidden) {
             return <Note key={note.id} note={note} />;
           }
         })}
 		<CreateNote />
       </div>
-
     </div>
   );
 }

@@ -4,8 +4,7 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import PocketBase from "pocketbase";
 import styles from "../../styles/Notes.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import EditorBar from "./EditorBar";
 
 
 export default function CreateNote() {
@@ -16,7 +15,7 @@ export default function CreateNote() {
 	const client = new PocketBase('http://127.0.0.1:8090');
 
 	const create = async () => {
-		const record = await client.records.create('notes1', {
+		await client.records.create('notes1', {
 			title: title,
 			content: content,
 			hidden: false
@@ -33,7 +32,7 @@ export default function CreateNote() {
 	}
 
 	return (
-		<form onSubmit={create} className={styles.note}>
+		<form className={styles.note}>
 			<input
 				type="text"
 				placeholder="New Note Title"
@@ -47,12 +46,7 @@ export default function CreateNote() {
 				onChange={(e) => setContent(e.target.value)}
 				className={styles.contentInput}
 			/>
-			<button type="submit" className={styles.create}>
-				<FontAwesomeIcon icon={faCheck} />
-			</button>
-			<button type="button" onClick={cancel} className={styles.create}>
-				<FontAwesomeIcon icon={faXmark} />
-			</button>
+			<EditorBar create={create} cancel={cancel} />
 		</form>
 	);
 }
