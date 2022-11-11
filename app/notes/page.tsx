@@ -8,7 +8,7 @@ export const db = {
 };
 
 async function getNotes() {
-  const client = await fetch(`${db.route}/api/collections/${db.collectionName}/records?page=1&perPage=30`, {next: {revalidate: 1}});
+  const client = await fetch(`${db.route}/api/collections/${db.collectionName}/records`, {next: {revalidate: 1}});
   const data = await client.json();
   return data?.items as any[];
 }
