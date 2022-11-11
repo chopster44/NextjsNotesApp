@@ -2,7 +2,7 @@ import styles from '../../styles/Notes.module.css';
 import {ChangeEvent, useState} from "react";
 import EditorBar from "./EditorBar";
 import {useRouter} from "next/navigation";
-import PocketBase from "pocketbase";
+import {db} from "./page";
 
 export default function Content({ data }: any) {
 	const { title, content, id } = data || {};
@@ -10,13 +10,17 @@ export default function Content({ data }: any) {
 	const [newContent, changeContent] = useState(content);
 
 	const router = useRouter();
-	const client = new PocketBase('http://127.0.0.1:8090');
 
 	const update = async () => {
-		await client.records.update('notes1', id,{
-			title: newTitle,
-			content: newContent,
-			hidden: false
+		await fetch(`${db.route}/api/collections/${db.collectionName}/records/${id}`, {
+			method: "PATCH",
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify({
+				title: newTitle,
+				content: newContent,
+			}),
 		});
 
 		changeContent(newContent);

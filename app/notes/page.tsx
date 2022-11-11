@@ -1,18 +1,15 @@
 import CreateNote from "./CreateNote";
 import styles from "../../styles/Notes.module.css";
 import Note from './Note';
-import PocketBase from "pocketbase";
 
-export const dynamic = "auto",
-  dynamicParams = true,
-  revalidate = 0,
-  fetchCache = "auto",
-  runtime = "nodejs",
-  preferredRegion = "auto";
+export const db = {
+    route: 'http://127.0.0.1:8090',
+    collectionName: 'notes1'
+};
 
 async function getNotes() {
-  const client = new PocketBase("http://127.0.0.1:8090");
-  const data = await client.records.getList("notes1");
+  const client = await fetch(`${db.route}/api/collections/${db.collectionName}/records?page=1&perPage=30`, {next: {revalidate: 1}});
+  const data = await client.json();
   return data?.items as any[];
 }
 

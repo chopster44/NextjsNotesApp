@@ -3,8 +3,7 @@ import PocketBase from 'pocketbase';
 
 async function getNote(noteId: string) {
 	const client = new PocketBase('http://127.0.0.1:8090');
-	const data = await client.records.getOne('notes1', noteId);
-	return data;
+	return await client.records.getOne('notes1', noteId);
 }
 
 

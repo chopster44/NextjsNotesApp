@@ -2,17 +2,23 @@ import styles from "../../styles/Notes.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowMaximize, faXmark } from "@fortawesome/free-solid-svg-icons";
-import PocketBase from 'pocketbase';
 import { useRouter } from "next/navigation";
+import {db} from "./page";
 
 export default function TopBar({ id }: any) {
 	const router = useRouter();
-	const client = new PocketBase('http://127.0.0.1:8090');
 
 	const hide = async () => {
-		await client.records.update('notes1', id, {
-			hidden: true
+		await fetch(`${db.route}/api/collections/${db.collectionName}/records/${id}`, {
+			method: "PATCH",
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify({
+				hidden: true,
+			}),
 		});
+
 		router.refresh();
 	}
 
