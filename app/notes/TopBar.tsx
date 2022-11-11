@@ -1,5 +1,3 @@
-// 'use client'
-
 import styles from "../../styles/Notes.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
