@@ -5,11 +5,11 @@ import { faWindowMaximize, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import {db} from "./page";
 
-export default function TopBar({ id }: any) {
+export default function TopBar(props:any) {
 	const router = useRouter();
 
 	const hide = async () => {
-		await fetch(`${db.route}/api/collections/${db.collectionName}/records/${id}`, {
+		await fetch(`${db.route}/api/collections/${db.collectionName}/records/${props.id}`, {
 			method: "PATCH",
 			headers: {
 				"Content-type": "application/json",
@@ -24,7 +24,7 @@ export default function TopBar({ id }: any) {
 
   return (
 	<div className={styles.bar}>
-		<Link href={`/notes/${id}`} className={styles.barItem}>
+		<Link href={`/notes/${props.id}`} className={styles.barItem}>
 			<FontAwesomeIcon icon={faWindowMaximize} />
 		</Link>
 		<button onClick={hide} className={styles.barItem}>
