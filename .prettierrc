@@ -1,0 +1,36 @@
+{
+	"tabWidth": 4,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"bracketSpacing": true,
+	"bracketSameLine": true,
+	"arrowParens": "always",
+	"overrides": [
+		{
+			"files": ".prettierrc",
+			"options": {
+				"parser": "json"
+			}
+		},
+		{
+			"files": ["**/*.ts", "**/*.tsx", "**/**/*.ts", "**/**/*.tsx"],
+			"options": {
+				"parser": "babel-ts",
+				"trailingComma": "es5"
+			}
+		},
+		{
+			"files": "*.md",
+			"options": {
+				"parser": "markdown"
+			}
+		},
+		{
+			"files": ["styles/**.css", "styles/**.module.css"],
+			"options": {
+				"parser": "css"
+			}
+		}
+	]
+}
