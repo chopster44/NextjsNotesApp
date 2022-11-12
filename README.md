@@ -23,4 +23,3 @@ This is a web based Notes app which I am using to learn Nextjs. The notes are di
 
 #### Possible problems:
 - The pocketbase executable is a linux executable. To run on Windows or Mac download the right executable [here](https://pocketbase.io/docs/)
-- 
