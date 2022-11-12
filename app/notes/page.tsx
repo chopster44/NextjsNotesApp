@@ -4,7 +4,7 @@ import Note from './Note';
 
 export const db = {
 	route: 'http://192.168.0.12:8090',
-	collectionName: 'notes1',
+	collectionName: 'notes',
 };
 
 async function getNotes() {
@@ -26,8 +26,6 @@ export default async function NotesPage() {
 				{notes?.map((note) => {
 					if (!note.hidden) {
 						return <Note key={note.id} note={note} />;
-					} else {
-						return;
 					}
 				})}
 				<CreateNote />
