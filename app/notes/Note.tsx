@@ -6,7 +6,7 @@ import Content from "./Content";
 
 export default function Note({ note }: any) {
 	const { id, title, content } = note || {};
-	let data = { title, content, id };
+	const data = { title, content, id };
 	return (
 		<div className={styles.note}>
 			<TopBar id={id} />

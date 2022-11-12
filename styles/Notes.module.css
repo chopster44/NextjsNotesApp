@@ -91,7 +91,8 @@
 	border: none;
 	width: 100%;
 	max-width: 100%;
-	overflow: hidden;
+	/*overflow: hidden;*/
+	resize: none;
 }
   
   .titleInput {

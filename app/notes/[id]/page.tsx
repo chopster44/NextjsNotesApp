@@ -1,9 +1,9 @@
 import styles from '../../../styles/Notes.module.css';
-import PocketBase from 'pocketbase';
+import {db} from "../page";
 
 async function getNote(noteId: string) {
-	const client = new PocketBase('http://127.0.0.1:8090');
-	return await client.records.getOne('notes1', noteId);
+	const client = await fetch(`${db.route}/api/collections/${db.collectionName}/records/${noteId}`, {cache: 'no-store'});
+	return client.json();
 }
 
 
@@ -12,7 +12,6 @@ export default async function NotePage({ params }: any) {
 
 	return (
 		<div>
-			<h1>notes/{note.id}</h1>
 			<div className={styles.note}>
 				<h2>{note.title}</h2>
 				<h5>{note.content}</h5>
