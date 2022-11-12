@@ -1,14 +1,14 @@
-import styles from "../../styles/Notes.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import styles from '../../styles/Notes.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 interface createCancel {
-	create: () => void,
-	cancel: () => void,
+	create: () => void;
+	cancel: () => void;
 }
 
 export default function EditorBar({ create, cancel }: createCancel) {
-	return(
+	return (
 		<div>
 			<button type="button" onClick={create} className={styles.create}>
 				<FontAwesomeIcon icon={faCheck} />
@@ -17,5 +17,5 @@ export default function EditorBar({ create, cancel }: createCancel) {
 				<FontAwesomeIcon icon={faXmark} />
 			</button>
 		</div>
-	)
+	);
 }
